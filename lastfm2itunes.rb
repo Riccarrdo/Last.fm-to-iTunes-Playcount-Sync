@@ -15,6 +15,7 @@ def filter_name(name)
   name.force_encoding("utf-8")
   # This is a hack until I can find out how to do true Unicode normalization in Ruby 1.9
   #  (The Unicode gem doesn't work in 1.9, String#chars.normalize is gone. WTF to do?)
+  #  Credit for this goes to my coworker Jordi Bunster
   {
     ['á','à','â','ä','Ä','Â','À','Á','ã','Ã'] => 'a',
     ['é','è','ê','ë','Ë','Ê','È','É']         => 'e',
@@ -52,8 +53,8 @@ rescue
         playcounts[artist][name] ||= 0
         playcounts[artist][name] += track.search('playcount').first.content.to_i
       end
-      #rescue
-      #  puts "Error getting listening data for week of #{time.year}-#{time.month}-#{time.day}"
+      rescue
+        puts "Error getting listening data for week of #{time.year}-#{time.month}-#{time.day}"
     end
   end
 
