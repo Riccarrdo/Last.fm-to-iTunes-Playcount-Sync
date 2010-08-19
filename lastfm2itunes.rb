@@ -7,6 +7,7 @@
 username = ARGV.first
 
 require 'open-uri'
+require 'rubygems'
 require 'nokogiri' rescue "This script depends on the Nokogiri gem. Please run '(sudo) gem install nokogiri'."
 require 'appscript' rescue "This script depends on the rb-appscript gem. Please run '(sudo) gem install rb-appscript'."
 include Appscript
